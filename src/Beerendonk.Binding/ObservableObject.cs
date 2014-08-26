@@ -29,7 +29,7 @@ namespace Beerendonk.Binding
         /// <param name="oldValue">Old value of the property</param>
         /// <param name="newValue">New value of the property</param>
         /// <returns></returns>
-        protected bool ChangeProperty<T>(string propertyName, ref T oldValue, ref T newValue)
+        protected bool ChangeProperty<T>(string propertyName, ref T oldValue, T newValue)
         {
             // Can the property be found?
             Debug.Assert(

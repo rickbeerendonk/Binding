@@ -16,7 +16,7 @@ using System.Reflection;
 
 namespace Beerendonk.Binding
 {
-    public class BindableObject : INotifyPropertyChanged
+    public class ObservableObject : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

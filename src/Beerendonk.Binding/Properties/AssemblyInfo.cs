@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Beerendonk.Binding")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Simplifies creating databindable objects in .NET")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Beerendonk")]
 [assembly: AssemblyProduct("Beerendonk.Binding")]

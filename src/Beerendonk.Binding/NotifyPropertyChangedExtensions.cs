@@ -20,12 +20,12 @@ namespace Beerendonk.Binding
         /// No need to have PropertyNames as string in your code when using this method with param "o => o.PropertyName"
         /// Source: http://themechanicalbride.blogspot.com/2007/03/symbols-on-steroids-in-c.html
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <typeparam name="R"></typeparam>
+        /// <typeparam name="T">Type of the class.</typeparam>
+        /// <typeparam name="TProperty">Type of the property.</typeparam>
         /// <param name="obj"></param>
         /// <param name="expr"></param>
         /// <returns>Property</returns>
-        public static string GetPropertyName<T, R>(this T obj, Expression<Func<T, R>> expr) where T : INotifyPropertyChanged
+        public static string GetPropertyName<T, TProperty>(this T obj, Expression<Func<T, TProperty>> expr) where T : INotifyPropertyChanged
         {
             return ((MemberExpression)expr.Body).Member.Name;
         }

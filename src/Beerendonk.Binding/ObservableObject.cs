@@ -12,11 +12,12 @@ using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 
 namespace Beerendonk.Binding
 {
-    public class ObservableObject : INotifyPropertyChanged
+    public class ObservableObject<T> : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -24,12 +25,12 @@ namespace Beerendonk.Binding
         /// If the property value changes, the oldValue will be replaced by the newValue
         /// and the INotifyPropertyChanged.PropertyChanged event will be raised.
         /// </summary>
-        /// <typeparam name="T">Type of the property</typeparam>
-        /// <param name="propertyName">Name of the property</param>
-        /// <param name="oldValue">Old value of the property</param>
-        /// <param name="newValue">New value of the property</param>
+        /// <typeparam name="TProperty">Type of the property.</typeparam>
+        /// <param name="propertyName">Name of the property.</param>
+        /// <param name="oldValue">Old value of the property.</param>
+        /// <param name="newValue">New value of the property.</param>
         /// <returns></returns>
-        protected bool ChangeProperty<T>(string propertyName, ref T oldValue, T newValue)
+        protected bool ChangeProperty<TProperty>(string propertyName, ref TProperty oldValue, TProperty newValue)
         {
             // Can the property be found?
             Debug.Assert(
@@ -49,6 +50,20 @@ namespace Beerendonk.Binding
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// If the property value changes, the oldValue will be replaced by the newValue
+        /// and the INotifyPropertyChanged.PropertyChanged event will be raised.
+        /// </summary>
+        /// <typeparam name="TProperty">Type of the property.</typeparam>
+        /// <param name="propertyExpression">Expression identifying the property: "o => o.PropertyName".</param>
+        /// <param name="oldValue">Old value of the property.</param>
+        /// <param name="newValue">New value of the property.</param>
+        /// <returns></returns>
+        protected bool ChangeProperty<TProperty>(Expression<Func<T, TProperty>> propertyExpression, ref TProperty oldValue, TProperty newValue)
+        {
+            return ChangeProperty(((MemberExpression)propertyExpression.Body).Member.Name, ref oldValue, newValue);
         }
 
         // Event Design Guidelines:

@@ -12,6 +12,6 @@
     <description>$description$</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright © Rick Beerendonk, 2014</copyright>
-    <tags>Transit</tags>
+    <tags>Databinding</tags>
   </metadata>
 </package>

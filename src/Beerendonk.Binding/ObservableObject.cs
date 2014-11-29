@@ -17,8 +17,15 @@ using System.Reflection;
 
 namespace Beerendonk.Binding
 {
+    /// <summary>
+    /// Base class for observable classes.
+    /// </summary>
+    /// <typeparam name="T">Type of the derived class.</typeparam>
     public class ObservableObject<T> : INotifyPropertyChanged
     {
+        /// <summary>
+        /// Occurs when a property value changes.
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
@@ -29,7 +36,7 @@ namespace Beerendonk.Binding
         /// <param name="propertyName">Name of the property.</param>
         /// <param name="oldValue">Old value of the property.</param>
         /// <param name="newValue">New value of the property.</param>
-        /// <returns></returns>
+        /// <returns><c>true</c> if the property value changed, otherwise <c>false</c>.</returns>
         protected bool ChangeProperty<TProperty>(string propertyName, ref TProperty oldValue, TProperty newValue)
         {
             // Can the property be found?
@@ -60,7 +67,7 @@ namespace Beerendonk.Binding
         /// <param name="propertyExpression">Expression identifying the property: "o => o.PropertyName".</param>
         /// <param name="oldValue">Old value of the property.</param>
         /// <param name="newValue">New value of the property.</param>
-        /// <returns></returns>
+        /// <returns><c>true</c> if the property value changed, otherwise <c>false</c>.</returns>
         protected bool ChangeProperty<TProperty>(Expression<Func<T, TProperty>> propertyExpression, ref TProperty oldValue, TProperty newValue)
         {
             return ChangeProperty(((MemberExpression)propertyExpression.Body).Member.Name, ref oldValue, newValue);

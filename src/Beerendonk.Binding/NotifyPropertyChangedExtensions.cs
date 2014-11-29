@@ -14,11 +14,13 @@ using System.Linq.Expressions;
 
 namespace Beerendonk.Binding
 {
+    /// <summary>
+    /// Extension methods for the <see cref="INotifyPropertyChanged"/> interface.
+    /// </summary>
     public static class NotifyPropertyChangedExtensions
     {
         /// <summary>
         /// No need to have PropertyNames as string in your code when using this method with param "o => o.PropertyName"
-        /// Source: http://themechanicalbride.blogspot.com/2007/03/symbols-on-steroids-in-c.html
         /// </summary>
         /// <typeparam name="T">Type of the class.</typeparam>
         /// <typeparam name="TProperty">Type of the property.</typeparam>

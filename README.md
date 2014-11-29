@@ -1,6 +1,9 @@
 Binding
 =======
 
+[![NuGet version](http://img.shields.io/nuget/v/Beerendonk.Binding.svg)](https://www.nuget.org/packages/Beerendonk.Binding)
+[![NuGet downloads](http://img.shields.io/nuget/dt/Beerendonk.Binding.svg)](https://www.nuget.org/packages/Beerendonk.Binding)
+
 Simplifies creating databindable objects in .NET
 
 ## Releases and Dependency Information

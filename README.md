@@ -18,6 +18,40 @@ This is a Portable Class Library with the following targets:
 
 ## Usage
 
+```C#
+// Demo class should inherit ObservableObject<T> where T should become the Demo class itself.
+public class Demo : ObservableObject<Demo>
+{
+    // Example: Property Name snippet.
+    private string _FirstProperty;
+    public string FirstProperty
+    {
+        get
+        {
+            return _FirstProperty;
+        }
+        set
+        {
+            ChangeProperty("FirstProperty", ref _FirstProperty, value);
+        }
+    }
+
+    // Example: Property Expression snippet.
+    private int _SecondProperty;
+    public int SecondProperty
+    {
+        get
+        {
+            return _SecondProperty;
+        }
+        set
+        {
+            ChangeProperty(o => o.SecondProperty, ref _SecondProperty, value);
+        }
+    }
+}
+```
+
 ## Copyright and License
 Copyright © 2014 Rick Beerendonk. All rights reserved.
 
